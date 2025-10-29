@@ -1,7 +1,7 @@
 # About
 
 This script enables **automatic GPU toggling** in Windows when users start/stop watching a media on a JellyFin server.
-The goal is to **reduce the power consumption** of the server when the GPU is not active, typically with some Intel GPUs that can go up to 40W of consumption when on 0% load.
+The goal is to **reduce the server's power consumption** when the GPU is not active, typically with some Intel GPUs that can go up to 40W of consumption when on 0% load.
 
 # Setup
 
@@ -15,8 +15,13 @@ In order to make the script work, you will need to configure your JellyFin serve
 7. **Check** ```Playback Start``` and ```Session Start``` in the "Notification Type" section and leave the other boxes by default
 8. In the "Template" section, **put the following** : ```{Event: "playback.start", User: "{{NotificationUsername}}"}```
 9. **Repeat** the steps 6, 7 and 8 but check ```Playback Stop``` and ```Session End``` instead and set the Template to ```{Event: "playback.stop", User: "{{NotificationUsername}}"}```
-10. **Execute** my script in admin mode
+10. Download ```Jellyfin-gpu-toggler.ps1``` or clone the repo, put it where you want and **run** it in admin mode.
 
 ## Auto launch on Windows startup
 
-Coming soon...
+If you want the script to automatically launch at Windows startup, you will first need the launcher I provided that will automatically elevate the script with admin privilege. It's the easiest way I found to launch admin script at Windows startup.
+1. Download ```Jellyfin-gpu-toggler-launcher.bat``` and put it where you want
+2. Hit right-click on the .bat -> Show more option -> Create shortcut, or just Create shortcut if you are on Windows 10
+3. Move the shortcut to the Windows startup folder, typically ```C:\Users\Paco\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup``` (replace Paco with your user folder)
+
+In this way, the script should automatically launch when you reboot your computer.
